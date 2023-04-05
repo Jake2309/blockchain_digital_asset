@@ -1,0 +1,39 @@
+{
+  "name": "blockchain_digital_asset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "lite-server",
+    "compile": "truffle compile",
+    "prettier": "prettier --write 'contracts/**/*.sol'",
+    "migrate": "truffle migrate --reset --network mainnet",
+    "migrate-dev": "truffle migrate --network development",
+    "migrate-dev-reset": "truffle migrate --reset --all --network development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D4Death/blockchain_digital_asset.git"
+  },
+  "author": "cuongtv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/D4Death/blockchain_digital_asset/issues"
+  },
+  "homepage": "https://github.com/D4Death/blockchain_digital_asset#readme",
+  "dependencies": {
+    "@ganache/console.log": "^0.3.0",
+    "@openzeppelin/contracts": "^4.8.2",
+    "@truffle/hdwallet-provider": "^1.7.0"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "prettier": "^2.8.4",
+    "prettier-plugin-solidity": "^1.1.3",
+    "truffle-contract-size": "^2.0.1"
+  }
+}

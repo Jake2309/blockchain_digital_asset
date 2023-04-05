@@ -1,0 +1,15 @@
+current account: 0xC9C913c8c3C1Cd416d80A0abF475db2062F161f6
+
+   Replacing 'FNCToken'
+   --------------------
+   > transaction hash:    0x58930d13e44ebddc02c1439d37c7197b8d3893beb70b4294a09c11d9e93704a7
+   > Blocks: 0            Seconds: 4
+   > contract address:    0xe9C39233E6cFd55eb5E2f69Af37Bc631fc879Ca5
+   > block number:        16698
+   > block timestamp:     1678986314
+   > account:             0xC9C913c8c3C1Cd416d80A0abF475db2062F161f6
+   > balance:             1000000001
+   > gas used:            1704725 (0x1a0315)
+   > gas price:           0 gwei
+   > value sent:          0 ETH
+   > total cost:          0 ETH
