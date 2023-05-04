@@ -21,17 +21,20 @@ contract Fino1155Token is ERC1155, Ownable, Pausable, ERC1155Burnable, ERC1155Su
     uint[] public ids; //uint array of ids
     string public baseMetadataURI; //the token metadata URI
     string public name; //the token mame
+    address public nftOwner;
     uint public mintFee = 0 wei; //mintfee, 0 by default. only used in mint function, not batch.
 
     mapping(string => uint) public nameToId; //name to id mapping
     mapping(uint => string) public idToName; //id to name mapping
 
     constructor(
+        address _nftOwner,
         string memory _symbol,
         uint256 _id,
         string memory _uri,
         uint256 _maxSupply
     ) ERC1155(_uri) {
+        nftOwner = _nftOwner;
         ids.push(_id);
         maxSupply = _maxSupply;
         name = _symbol;
@@ -40,7 +43,10 @@ contract Fino1155Token is ERC1155, Ownable, Pausable, ERC1155Burnable, ERC1155Su
         baseMetadataURI = _uri;
         nameToId[_symbol] = _id;
         idToName[_id] = _symbol;
-        transferOwnership(tx.origin);
+        mint(_nftOwner, _id, _maxSupply);
+
+        // transfer nft to creator, by default nft holded by contract address
+        // transferOwnership(tx.origin);
     }
 
     function setURI(string memory newuri) public onlyOwner {
@@ -68,8 +74,8 @@ contract Fino1155Token is ERC1155, Ownable, Pausable, ERC1155Burnable, ERC1155Su
         payable 
     {
         require(msg.value == mintFee, 'Fee does not match');
-        require(_currentSupply <= maxSupply, "All tokens are minted!");
         _currentSupply += amount;
+        require(_currentSupply <= maxSupply, "All tokens are minted!");
         _mint(to, tokenId, amount, "");
         // _mint(account, id, amount, data);
     }
@@ -88,4 +94,16 @@ contract Fino1155Token is ERC1155, Ownable, Pausable, ERC1155Burnable, ERC1155Su
     {
         super._beforeTokenTransfer(operator, from, to, _ids, amounts, data);
     }
+
+    function approveToken(address to, bool approved) external {
+        _setApprovalForAll(address(this), to, approved);
+    }
+
+    function transferToken(address from, address to, uint256 tokenId, uint256 amount) external {
+        _safeTransferFrom(from, to, tokenId, amount, "");
+    }
+
+    function lendingAsset() external {}
+
+    function settleContract() external {}
 }

@@ -73,7 +73,10 @@ module.exports = {
       gasPrice: 0,   // 20 gwei (in wei) (default: 100 gwei)
     },
   },
-
+  solidityLog: {
+    displayPrefix: ' :', // defaults to ""
+    preventConsoleLogMigration: true, // defaults to false
+  },
   // Set default mocha options here, use special reporters, etc.
   mocha: {
     // timeout: 100000

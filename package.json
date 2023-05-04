@@ -26,11 +26,11 @@
   },
   "homepage": "https://github.com/D4Death/blockchain_digital_asset#readme",
   "dependencies": {
-    "@ganache/console.log": "^0.3.0",
     "@openzeppelin/contracts": "^4.8.2",
     "@truffle/hdwallet-provider": "^1.7.0"
   },
   "devDependencies": {
+    "@ganache/console.log": "0.4.0",
     "lite-server": "^2.6.1",
     "prettier": "^2.8.4",
     "prettier-plugin-solidity": "^1.1.3",
